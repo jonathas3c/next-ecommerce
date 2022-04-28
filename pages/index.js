@@ -1,9 +1,10 @@
 import React from 'react';
 
+import { Product, FooterBanner, HeroBanner } from '../components';
 const Home = () => {
 	return (
 		<>
-			Hero Banner
+			<HeroBanner />
 			<div className='products-heading'>
 				<h2>Best Selling Products</h2>
 				<p>Speakers of many variations</p>
@@ -11,7 +12,7 @@ const Home = () => {
 			<div className='products-container'>
 				{['Product 1', 'Product 2', 'Product 3'].map((product) => product)}
 			</div>
-			Footer
+			<FooterBanner />
 		</>
 	);
 };
