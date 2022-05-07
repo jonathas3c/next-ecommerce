@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable @next/next/no-img-element */
+import React, { useState } from 'react';
 import {
 	AiOutlineMinus,
 	AiOutlinePlus,
@@ -11,19 +12,32 @@ import { client, urlFor } from '../../lib/client';
 
 const ProductDetails = ({ product, products }) => {
 	const { image, name, details, price } = product;
+	const [index, setIndex] = useState(0);
 
 	return (
 		<div>
 			<div className='product-detail-container'>
 				<div>
 					<div className='image-container'>
-						<img src={urlFor(image && image[0])} />
+						<img
+							src={urlFor(image && image[index])}
+							alt={name}
+							className={'product-detail-image'}
+						/>
 					</div>
-					{/* <div className="small-images-container">
-                        {image?.map((item, i) => (
-                            <img key={i} src={urlFor(item)} className="" onMouseEnter="" />
-                        ))}
-                    </div> */}
+					<div className='small-images-container'>
+						{image?.map((item, i) => (
+							<img
+								key={i}
+								src={urlFor(item)}
+								className={
+									i === index ? 'small-image selected-image' : 'small-image'
+								}
+								onMouseEnter={() => setIndex(i)}
+								alt={name}
+							/>
+						))}
+					</div>
 				</div>
 
 				<div className='product-detail-desc'>
