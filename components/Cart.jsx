@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
 import React, { useRef } from 'react';
 import Link from 'next/link';
 import {
@@ -21,6 +23,7 @@ const Cart = () => {
 		cartItems,
 		setShowCart,
 		toggleCartItemQuantity,
+		onRemove,
 	} = useStateContext();
 	return (
 		<div className='cart-wrapper'>
@@ -88,7 +91,11 @@ const Cart = () => {
 												</span>
 											</p>
 										</div>
-										<button type='button' className='remove-item' onClick=''>
+										<button
+											type='button'
+											className='remove-item'
+											onClick={() => onRemove()}
+										>
 											<TiDeleteOutline />
 										</button>
 									</div>
