@@ -11,10 +11,10 @@ import {
 
 import { TiDeleteOutline } from 'react-icons/ti';
 import toast from 'react-hot-toast';
+import getStripe from '../lib/getStripe';
 
 import { useStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
-import getStripe from '../lib/GETSTRIPE.JS';
 
 const Cart = () => {
 	const cartRef = useRef();
@@ -44,7 +44,7 @@ const Cart = () => {
 
 		toast.loading('Redirecting...');
 
-		stripe.redirectToCheckout({ sessionID: data.id });
+		stripe.redirectToCheckout({ sessionId: data.id });
 	};
 
 	return (
@@ -78,7 +78,7 @@ const Cart = () => {
 
 				<div className='product-container'>
 					{cartItems.length >= 1 &&
-						cartItems.map((item, index) => (
+						cartItems.map((item) => (
 							<div className='product' key={item._id}>
 								<img
 									src={urlFor(item?.image[0])}
